@@ -32,3 +32,17 @@ def chatbot(request):
         response = ask_openai(message)
         return JsonResponse({'message': message, 'response': response})
     return render(request, 'chatbot.html')
+
+
+def register(request):
+    pass
+
+
+def login(request):
+    pass
+
+
+def logout(request):
+    pass
+
+
