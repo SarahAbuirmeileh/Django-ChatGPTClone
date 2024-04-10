@@ -1,5 +1,5 @@
 from django.urls import path
-import views
+from chatbot import views
 
 urlpatterns = [
     path('', views.chatbot, name='chatbot')
