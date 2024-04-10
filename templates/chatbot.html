@@ -68,11 +68,16 @@
 <div class="chat-container">
   <div class="card flex-grow-1">
     <div class="card-header bg-primary text-white">Chat</div>
+    {% if user.is_authenticated %}
+    <div class="card-header bg-primary text-white"><b>Welcome, {{user.username}}</b>   <a style="color: white;" href="logout">Logout</a></div>
+    {% else %}
+    <div class="card-header bg-primary text-white"><a style="color: white" href="login">Login</a>   <a style="color: white;" href="register">Register</a></div>
+    {% endif %}
     <div class="card-body messages-box">
-      
+
       <ul class="list-unstyled messages-list">
-        
-        <li class="message received">
+
+        <!-- <li class="message received">
           <div class="message-text">
             <div class="message-sender">
               <b>AI Chatbot</b>
@@ -81,9 +86,38 @@
               Hi {{user.username}}, I am your AI Chatbot, you can ask me anything.
             </div>
           </div>
+        </li> -->
+
+        {% for chat in chats %}
+          {% if chat.user == request.user %}
+
+            <li class="message sent">
+          <div class="message-text">
+            <div class="message-sender">
+              <b>You</b>
+            </div>
+            <div class="message-content">
+              {{chat.message}}
+            </div>
+          </div>
         </li>
+
+        <li class="message received">
+          <div class="message-text">
+            <div class="message-sender">
+              <b>AI Chatbot</b>
+            </div>
+            <div class="message-content">
+              {{chat.response}}
+            </div>
+          </div>
+        </li>
+
+          {% endif %}
+        {% endfor %}
+
       </ul>
-      
+
     </div>
     <br><br>
     <br><br>
@@ -99,7 +133,6 @@
     </div>
   </form>
 </div>
-
 
 <script>
   const messagesList = document.querySelector('.messages-list');
@@ -157,5 +190,4 @@
   });
 
 </script>
-
 {% endblock %}
