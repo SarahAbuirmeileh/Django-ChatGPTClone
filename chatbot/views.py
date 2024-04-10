@@ -83,3 +83,28 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('login')
+
+import requests
+
+def get_random_joke():
+    """
+    Fetches a random joke from an external API and returns it.
+    """
+    try:
+        response = requests.get("https://official-joke-api.appspot.com/random_joke")
+        if response.status_code == 200:
+            joke_data = response.json()
+            setup = joke_data.get("setup")
+            punchline = joke_data.get("punchline")
+            if setup and punchline:
+                return f"{setup}\n\n{punchline}"
+            else:
+                return "Oops! Something went wrong while fetching the joke."
+        else:
+            return "Oops! Failed to fetch joke. Please try again later."
+    except Exception as e:
+        print(f"Error: {e}")
+        return "Oops! Something went wrong. Please try again later."
+
+# Example usage:
+print(get_random_joke())
