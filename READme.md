@@ -35,4 +35,10 @@ View previous conversations in the chat history.
 
 ## Credits:©️
 This application utilizes the OpenAI GPT-3.5 model for natural language processing.
-Developed by Sarah Abu irmeileh  - sarahabuirmeileh@gmail.com 👩‍💻
+
+
+## Author
+
+**Sarah Abu Irmeileh**
+- GitHub: [@SarahAbuirmeileh](https://github.com/SarahAbuirmeileh)
+- LinkedIn: [Sarah Abu Irmeileh](https://www.linkedin.com/in/sarah-abu-irmeileh)
